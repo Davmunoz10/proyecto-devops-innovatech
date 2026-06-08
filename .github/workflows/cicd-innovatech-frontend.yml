@@ -10,7 +10,6 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout del código
         uses: actions/checkout@v3
@@ -36,3 +35,20 @@ jobs:
           cd "Innovatech-proyecto/ISY1101_EP2_Proyecto Semestral/proyecto semestral/front_despacho"
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+
+      - name: Desplegar en EC2 via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.EC2_HOST_FRONTEND }}
+          username: ec2-user
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            aws ecr get-login-password --region ${{ secrets.AWS_REGION }} | docker login --username AWS --password-stdin ${{ secrets.ECR_REGISTRY }}
+            docker pull ${{ secrets.ECR_REGISTRY }}/innovatech-frontend:latest
+            docker stop frontend-innovatech || true
+            docker rm frontend-innovatech || true
+            docker run -d \
+              --name frontend-innovatech \
+              --restart always \
+              -p 80:80 \
+              ${{ secrets.ECR_REGISTRY }}/innovatech-frontend:latest
