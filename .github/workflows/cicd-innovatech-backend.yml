@@ -3,7 +3,7 @@ name: CI/CD Innovatech - Backend Despachos
 on:
   push:
     branches:
-      - main  
+      - deploy  
     paths:
       - 'Innovatech-proyecto/ISY1101_EP2_Proyecto Semestral/proyecto semestral/back-Despachos_SpringBoot/**'
 
