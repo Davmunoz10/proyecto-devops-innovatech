@@ -33,6 +33,6 @@ jobs:
           ECR_REPOSITORY: innovatech-backend-despachos
           IMAGE_TAG: latest
         run: |
-          cd "Innovatech-proyecto/ISY1101_EP2_Proyecto Semestral/proyecto semestral/back-Despachos_SpringBoot/Springboot-API-REST-DESPACHO"
+          cd "Innovatech-proyecto/ISY1101_EP2_Proyecto Semestral/proyecto semestral/back-Despachos_SpringBoot"
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
