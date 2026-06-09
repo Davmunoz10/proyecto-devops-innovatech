@@ -5,7 +5,7 @@ on:
     branches:
       - deploy
     paths:
-      - 'Innovatech-proyecto/ISY1101_EP2_Proyecto Semestral/proyecto semestral/back-Despachos_SpringBoot/**'
+      - 'Innovatech-proyecto/ISY1101_EP2_Proyecto Semestral/proyecto semestral/back-Ventas_SpringBoot/**'
 
 jobs:
   build-and-deploy:
@@ -29,9 +29,9 @@ jobs:
       - name: Construir, etiquetar y publicar imagen en ECR
         env:
           ECR_REGISTRY: ${{ secrets.ECR_REGISTRY }}
-          ECR_REPOSITORY: innovatech-backend-despachos
+          ECR_REPOSITORY: innovatech-backend-ventas
           IMAGE_TAG: latest
         run: |
-          cd "Innovatech-proyecto/ISY1101_EP2_Proyecto Semestral/proyecto semestral/back-Despachos_SpringBoot/Springboot-API-REST-DESPACHO"
+          cd "Innovatech-proyecto/ISY1101_EP2_Proyecto Semestral/proyecto semestral/back-Ventas_SpringBoot/Springboot-API-REST"
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
