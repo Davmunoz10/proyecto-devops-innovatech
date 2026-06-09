@@ -8,8 +8,6 @@
 		<version>3.4.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 		
-		
-		
 	</parent>
 	<groupId>com.citt</groupId>
 	<artifactId>Springboot-API-REST</artifactId>
