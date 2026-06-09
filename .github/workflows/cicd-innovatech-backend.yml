@@ -33,8 +33,6 @@ jobs:
           IMAGE_TAG: latest
         run: |
           cd "Innovatech-proyecto/ISY1101_EP2_Proyecto Semestral/proyecto semestral/back-Despachos_SpringBoot/Springboot-API-REST-DESPACHO"
-          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
-          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
 
       - name: Desplegar en EC2 via SSH
         uses: appleboy/ssh-action@v1.0.3
