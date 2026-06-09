@@ -1,4 +1,4 @@
-name: CI/CD Innovatech - Backend Despachos
+name: CI/CD Innovatech - Backend ventas
 
 on:
   push:
